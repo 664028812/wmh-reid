@@ -1,0 +1,196 @@
+### 用户认证相关路由
+POST http://localhost:8080/api/v1/register HTTP/1.1
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin",
+    "email": "test@example.com",
+    "phone": "1223333"
+}
+
+### 登录
+POST http://localhost:8080/api/v1/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "admin"
+}
+
+### 目标管理 - 创建目标
+POST http://localhost:8080/api/v1/goals
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "减重目标",
+    "type": "weight_loss",
+    "target": 65.0,
+    "start_value": 75.0,
+    "deadline": "2024-12-31"
+}
+
+### 目标管理 - 获取目标列表
+POST http://localhost:8080/api/v1/goals/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{}
+
+### 目标管理 - 获取目标详情
+POST http://localhost:8080/api/v1/goals/detail
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1
+}
+
+### 目标管理 - 更新目标
+POST http://localhost:8080/api/v1/goals/update
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1,
+    "title": "更新后的目标",
+    "target": 60.0
+}
+
+### 目标管理 - 删除目标
+POST http://localhost:8080/api/v1/goals/delete
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1
+}
+
+### 进度管理 - 更新进度
+POST http://localhost:8080/api/v1/progress
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1,
+    "value": 70.5,
+    "note": "本周进度"
+}
+
+### 进度管理 - 获取进度列表
+POST http://localhost:8080/api/v1/progress/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1
+}
+
+### 进度管理 - 获取进度统计
+POST http://localhost:8080/api/v1/progress/stats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1
+}
+
+### 提醒管理 - 获取提醒列表
+POST http://localhost:8080/api/v1/reminders/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{}
+
+### 提醒管理 - 创建提醒
+POST http://localhost:8080/api/v1/reminders
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "goal_id": 1,
+    "title": "每日打卡提醒",
+    "remind_time": "08:00",
+    "repeat_type": "daily"
+}
+
+### 提醒管理 - 更新提醒
+POST http://localhost:8080/api/v1/reminders/update
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reminder_id": 1,
+    "title": "更新后的提醒",
+    "remind_time": "09:00"
+}
+
+### 提醒管理 - 删除提醒
+POST http://localhost:8080/api/v1/reminders/delete
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "reminder_id": 1
+}
+
+### 用户相关 - 获取个人资料
+POST http://localhost:8080/api/v1/user/profile
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{}
+
+### 用户相关 - 更新个人资料
+POST http://localhost:8080/api/v1/user/profile/update
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "email": "newemail@example.com",
+    "phone": "13900139000"
+}
+
+### 管理员 - 获取用户列表
+POST http://localhost:8080/api/v1/admin/users/list
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{}
+
+### 管理员 - 获取用户详情
+POST http://localhost:8080/api/v1/admin/users/detail
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "user_id": 1
+}
+
+### 管理员 - 更新用户
+POST http://localhost:8080/api/v1/admin/users/update
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "user_id": 1,
+    "role": "admin",
+    "status": "active"
+}
+
+### 管理员 - 删除用户
+POST http://localhost:8080/api/v1/admin/users/delete
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "user_id": 1
+}
+
+### 管理员 - 获取系统统计
+POST http://localhost:8080/api/v1/admin/stats
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{}

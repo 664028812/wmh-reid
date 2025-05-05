@@ -1,0 +1,22 @@
+server:
+  address: ":8080"
+  mode: "debug"
+
+database:
+  driver: "sqlite3"
+  dbfile: "wmh.db"
+  host: "localhost"
+  port: 3306
+  username: "root"
+  password: ""
+  dbname: "wmh"
+
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+
+jwt:
+  secret: "your-secret-key"
+  expire_time: 24
